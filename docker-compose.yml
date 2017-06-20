@@ -1,0 +1,52 @@
+# Elias Barbosa maintained docker-compose.yml file.
+# Creates multiple Drupal web apps sharing the same MySQL database
+# Usage: docker-compose up -d
+version: '2'
+services:
+  drupal:
+    build:
+      context: ./builds/drupal-apache
+    image: drupal:8.2.3-apache
+    container_name: df_drupal
+#    volumes:
+      # - /var/www/html/modules
+      # - /var/www/html/profiles
+      # - /var/www/html/themes
+      # this takes advantage of the feature in Docker that a new anonymous
+      # volume (which is what we're creating here) will be initialized with the
+      # existing content of the image at the same location
+      # - /var/www/html/sites
+    volumes_from:
+      - mysql
+    ports:
+      - "8082:80"
+    links:
+      - mysql
+      - phpmyadmin
+    restart: always
+  mysql:
+    image: mariadb
+    ports:
+        - '3308:3306'
+#    volumes:
+#      - ./database:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=drupal
+      - MYSQL_USER=drupal
+      - MYSQL_PASSWORD=drupal
+    restart: always
+  data:
+    image: busybox
+    stdin_open: true
+    volumes:
+      - ./html:/var/www/html
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+#    container_name: phpmyadmin_8090
+    environment:
+      - PMA_ARBITRARY=1
+    ports:
+      - '8090:80'
+    links:
+      - mysql
