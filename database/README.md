@@ -10,4 +10,4 @@ When your website is created and all the scripts executed, the database in your 
 
 > **Note:**
 > 
-> If you have just made changes to your database, it would be advisable to wait for, at list, 2 minutes before stopping your container. This will give time for **"cron"** to synchronize your **"MySQL"** Docker Container database with this backup folder.
+> If you have just made changes to your database, it would be advisable to wait for, at list, 2 minutes before stopping your container. This will give enough time for **"cron"** to synchronize your **"MySQL"** Docker Container database with this backup folder.
