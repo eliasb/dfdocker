@@ -5,10 +5,11 @@ version: '2'
 services:
   drupal:
     build:
-      context: ./builds/drupal-apache
+      context: ./setup/builds/drupal-apache
     image: drupal:8.2.3-apache
-    container_name: df_drupal
-#    volumes:
+    volumes:
+      - ./html:/html
+      - ./setup/scripts/php.ini:/usr/local/etc/php/php.ini
       # - /var/www/html/modules
       # - /var/www/html/profiles
       # - /var/www/html/themes
@@ -16,20 +17,23 @@ services:
       # volume (which is what we're creating here) will be initialized with the
       # existing content of the image at the same location
       # - /var/www/html/sites
+      # - ./scripts/php.ini:/usr/local/etc/php/php.ini
     volumes_from:
       - mysql
     ports:
-      - "8082:80"
+      - "8081:80"
     links:
       - mysql
       - phpmyadmin
     restart: always
   mysql:
+    build:
+      context: ./setup/builds/mariadb
     image: mariadb
     ports:
-        - '3308:3306'
-#    volumes:
-#      - ./database:/var/lib/mysql
+        - '3307:3306'
+    volumes:
+      - ./database:/root/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=drupal
@@ -43,10 +47,9 @@ services:
       - ./html:/var/www/html
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-#    container_name: phpmyadmin_8090
     environment:
       - PMA_ARBITRARY=1
     ports:
-      - '8090:80'
+      - '8091:80'
     links:
       - mysql
