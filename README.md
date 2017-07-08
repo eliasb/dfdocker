@@ -83,7 +83,7 @@ Now is time to execute the **docker-compose.yml** file.
 
 ## **4. Start The Containers With Docker-Compose**
 
-Now that you have downloaded the this repository, you will need to use a tool called **"Docker-Compose"**. This tool will read the **"docker-compose.yml"** file that you just downloaded and it will create all the necessary Docker Containers:
+Now that you have downloaded this repository, you will need to use a tool called **"Docker-Compose"**. This tool will read the **"docker-compose.yml"** file that you just downloaded and it will create all the necessary Docker Containers:
 
     $ docker-compose up -d
 
@@ -97,7 +97,7 @@ The above command will initiate a long process that should take about 5 minutes 
 
 ## **5. Start Cron**
 
-**"Cron"** is a little program that I installed inside the  **"Drupal"** and the **"MariaDB"** containers. This little program will run a backup of you website and your database. This backup will be located inside your client's folder.
+**"Cron"** is a little program that I installed inside the  **"Drupal"** and the **"MariaDB"** containers. This little program will run a backup of your website and your database. This backup will be located inside your client's folder.
 
 You should always start **"Cron"** every time you start **"Kitematic"**. This will assure that you will have an up to date backup of your website & database. If, God forbid, you accidentally delete the containers, you can always recreate them with "Docker-Compose" but your client's files will be protected.
 
@@ -125,7 +125,7 @@ Now that we know the name of your two containers, we can issue the following two
 Now you are done with the terminal commands. It is time to switch to the **"Kitematic"** interface.
 
 1. From there you will see on the left-hand-side a list of your running containers. You should click on the container for **"Drupal"** which should have a name similar to **"example_drupal_1"**. You will see a bunch of stuff on the middle window. There is nothing for you to worry about. 
-2. Look to the right hand side and you will be able to see a small window with a familiar appearance. There should be a small screenshot of a Drupal 8 Installation screen. Click on that small screenshot. This will bring up your default Browser with the first screen for the Drupal 8 installation. 
+2. Look to the right-hand-side and you will be able to see a small window with a familiar appearance. There should be a small screenshot of a Drupal 8 Installation screen. Click on that small screenshot. This will bring up your default Browser with the first screen for the Drupal 8 installation. 
 3. Follow the Standard installation and, when prompted for the Database information you should use the following credentials: 
 	- Database Name: **drupal**
 	- User Name: **drupal**
@@ -142,7 +142,7 @@ Now you are done with the terminal commands. It is time to switch to the **"Kite
 Using **"PHPMyAdmin"** is very simple. Just follow these steps:
 
 1. Switch to the **"Kitematic"** interface and click on the **"example_phpmyadmin_1"** container.
-2. Look to the right hand side and you will be able to see a window with a small screenshot of a **"PHPMyAdmin"** login screen. Click on that small screenshot. This will bring up your default Browser with the **"PHPMyAdmin"** login page.
+2. Look to the right-hand-side and you will be able to see a window with a small screenshot of a **"PHPMyAdmin"** login screen. Click on that small screenshot. This will bring up your default Browser with the **"PHPMyAdmin"** login page.
 3. Following are the credentials you should supply in order to be able to login to **"PHPMyAdmin"**: 
 	- Server: **example_mysql_1**
 	- Username: **root**
@@ -151,7 +151,11 @@ Using **"PHPMyAdmin"** is very simple. Just follow these steps:
 
 ## **8. How To Create A New Client**
 
-Now that you have your first client set up, you will have to make a few small changes on the **docker-compose.yml** file. You will have to change the ports of each of the containers in order to be able to create your new client's containers. It is very simple. Just redo the step **"3. Use Git To Clone This Repo"** inside of your new client's folder. Once you have downloaded the this Repository, edit the file **docker-compose.yml** with your favorite text editor.
+Great! You have your first client set up. But, now, you want to set up a second client. How hard is it?
+
+You will not be able to do the exact same previous step again for your new client because your new containers will end up having a conflict with the **Port Numbers**. 
+
+You will have to make a few small changes on the **docker-compose.yml** file. You will have to change the ports for 3 of the containers in order to be able to create your new client's containers. It is very simple, though! Just redo the step **"3. Use Git To Clone This Repo"** inside of your new client's folder. Once you have downloaded this Repository, edit the file **docker-compose.yml** with your favorite text editor.
 
 First you should change the **Port Number** for the **"Drupal"** container. Go to line 24 where you should see the following:
 
