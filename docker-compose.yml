@@ -8,11 +8,11 @@ services:
       context: ./setup/builds/drupal-apache
     image: drupal:8.2.3-apache
     volumes:
-      - ./html:/html
+      - ./:/html
       - ./setup/scripts/php.ini:/usr/local/etc/php/php.ini
-      # - /var/www/html/modules
-      # - /var/www/html/profiles
-      # - /var/www/html/themes
+      - ./html/modules:/var/www/html/modules
+      - ./html/profiles:/var/www/html/profiles
+      - ./html/themes:/var/www/html/themes
       # this takes advantage of the feature in Docker that a new anonymous
       # volume (which is what we're creating here) will be initialized with the
       # existing content of the image at the same location
@@ -34,6 +34,8 @@ services:
         - '3307:3306'
     volumes:
       - ./database:/root/mysql
+      - /var/lib/mysql
+      - /usr/bin
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=drupal
@@ -45,6 +47,7 @@ services:
     stdin_open: true
     volumes:
       - ./html:/var/www/html
+    restart: always
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
@@ -53,3 +56,4 @@ services:
       - '8091:80'
     links:
       - mysql
+    restart: always
