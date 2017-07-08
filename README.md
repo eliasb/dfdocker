@@ -153,7 +153,7 @@ Using **"PHPMyAdmin"** is very simple. Just follow these steps:
 
 Great! You have your first client set up. But, now, you want to set up a second client. How hard is it?
 
-You will not be able to do the exact same previous step again for your new client because your new containers will end up having a conflict with the **Port Numbers**. 
+You will not be able to follow exactly the same steps again for your new client because your new containers will end up having a conflict with the **Port Numbers**. 
 
 You will have to make a few small changes on the **docker-compose.yml** file. You will have to change the ports for 3 of the containers in order to be able to create your new client's containers. It is very simple, though! Just redo the step **"3. Use Git To Clone This Repo"** inside of your new client's folder. Once you have downloaded this Repository, edit the file **docker-compose.yml** with your favorite text editor.
 
@@ -185,7 +185,7 @@ Now you can save your changes and continue with step **"4. Start The Containers 
 
 ## **9. How To Use Eclipse PDT With This**
 
-Eclipse is an amazing Open Source IDE (Integrated Development Environment). You can install Eclipse PDT by Googling for it and downloading the latest version. It can be a little confusing to figure out which version of Eclipse is the latest. The Eclipse community had the habit of giving names to each new major version. They also tend to develop each one in parallel. In my experience, the best way to know which one is the latest is not by going to their official website. You should, as I suggested, search on Google.
+Eclipse is an amazing Open Source IDE (Integrated Development Environment). You can install Eclipse PDT by Googling for it and downloading the latest version. It can be a little confusing to figure out which version of Eclipse is the latest. The Eclipse community has the habit of giving names to each new major version instead of numbers. They also tend to develop each one in parallel. In my experience, the best way to know which one is the latest is not by going to their official website. You should, as I suggested, search on Google.
 
 Just remember that there is an Eclipse version for each computer language. The Eclipse PDT is the one for PHP and JavaScript development.
 
