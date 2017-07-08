@@ -1,4 +1,4 @@
-#**How To Use Drupal 8 With Docker**
+# **How To Use Drupal 8 With Docker**
 
 **Description**
 -------------
@@ -15,6 +15,10 @@ My first experience with Kitematic was a little disappointing. I felt a little l
 
 [https://www.docker.com/products/docker-toolbox](https://www.docker.com/products/docker-toolbox)
 
+You will also have to create a Docker account in order to be able to download images from their repository.
+
+[https://cloud.docker.com](https://cloud.docker.com)
+
 ## **2. Creating A Workflow**
 
 You can use this Docker project in any way you see fit. However, I have created this project to be a complement to my personal workflow. For this reason, I will explain here how I use this Docker project in my work routine.
@@ -28,6 +32,10 @@ Whenever I get a new client, I go the **"Docker"** folder inside of my home fold
 Now that I have this folder created for my client, I go to the next phase which will be to clone this Docker project with **"Git"**.
 
 ## **3. Use Git To Clone This Repo**
+
+First of all, you will have to create an account in GitHub if you don't already have one:
+
+[https://github.com/join?source=header-home](https://github.com/join?source=header-home)
 
 I am coming from the premise that you have installed Docker Toolbox. To clone this repository you should double-click on the **"Docker Quickstart Terminal"** shortcut that should be on your desktop. This will open a Linux like terminal in your Windows or Mac. The terminal window will open up at your home folder. To see in what folder you are located, do the following in the terminal window:
 
@@ -69,7 +77,7 @@ Now that we are sure to be in the right location we can finally clone this repos
 
     $ git clone https://github.com/eliasb/dfdocker.git ./
 
-After issuing the above command you may be prompted to login to your Docker account. The above command will simply download all the necessary files and folder structure into your client's folder.
+After issuing the above command you may be prompted to login to your GitHub account. The above command will simply download all the necessary files and folder structure into your client's folder.
 
 Now is time to execute the **docker-compose.yml** file.
 
