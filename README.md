@@ -9,7 +9,7 @@ This is a Drupal 8 Development Environment using only the Official Docker Images
 
 ## **1. Install Docker Toolbox**
 
-If you don't have Docker installed in your computer yet, I'd recommend that you started with Docker Toolbox. This is a set of tools that includes a tool called Kitematic which will make your first experience with Docker much easier. Docker Toolbox is available for Windows or Mac and it will create a small VirtualBox VM that will allow Docker to run in your computer without much hassle.
+If you don't have Docker installed in your computer yet, I'd recommend that you start with Docker Toolbox. This is a set of tools that includes a tool called Kitematic which will make your first experience with Docker much easier. Docker Toolbox is available for Windows or Mac and it will create a small VirtualBox VM that will allow Docker to run in your computer without much hassle.
 
 My first experience with Kitematic was a little disappointing. I felt a little like I was riding a bicycle with soldered training wheels. I was mistaken. Once I got a little more experienced with Docker I realized that I could access the back-end of Kitematic with a Terminal window and use Kitematic in combination with it.
 
