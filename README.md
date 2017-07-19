@@ -47,7 +47,7 @@ After typing the above command you should see the following:
 
 This just means that you are currently located on your **"C:"** drive and you are inside the folder **"Users/My User Name"** where the **"My User Name"** part should be replaced with the user name you have in your operating system.
 
-If you have been following this tutorial from the beginning, you have created the folder **"Docker"** inside of your home folder. So, in order to clone this repository you will first have to enter into this folder:
+If you have been following this tutorial from the beginning, you have created the folder **"D"** in your **"C:"** drive. So, in order to clone this repository, you will first have to enter into this folder:
 
     $ cd /c/d
 
