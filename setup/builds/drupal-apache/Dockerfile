@@ -1,12 +1,12 @@
 #docker build .
 FROM drupal:8.2.3-apache
 
-MAINTAINER Theodoros Ploumis <me@theodorosploumis.com>
+MAINTAINER Elias Barbosa <info@eb8.com>
 
 RUN apt-get update && \
 DEBIAN_FRONTEND="noninteractive" apt-get install -y \
 git \
-vim \
+nano \
 cron \
 rsync \
 && rm -rf /var/lib/apt/lists/*
@@ -28,4 +28,4 @@ RUN composer require drupal/console:~1.0 \
              --sort-packages
 
 # Add a cron job to backup the website.
-RUN echo '* * * * * root /usr/bin/rsync -a /var/www/html /html' >> /etc/crontab
+RUN echo '* * * * * root A=/var/www/html && B=/html && /usr/bin/rsync -azu $A $B && /usr/bin/rsync -azu $B $A' >> /etc/crontab

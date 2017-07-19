@@ -23,11 +23,11 @@ You will also have to create a Docker account in order to be able to download im
 
 You can use this Docker project in any way you see fit. However, I have created this project to be a complement to my personal workflow. For this reason, I will explain here how I use this Docker project in my work routine.
 
-The first thing that I did after installing Kitematic was to go to my home folder and create a folder called **"Docker"**. This folder will be the storage place for all my clients. 
+The first thing that I did after installing Kitematic was to go to my **"C: Drive"** and create a folder called **"D"** for **"Docker"**. This folder will be the storage place for all my clients. 
 
-Whenever I get a new client, I go the **"Docker"** folder inside of my home folder and create a new folder for that client. I use my client's domain name as the name of that folder. If, for example, my client has a domain name **"example.com"** I call this client's folder as **"example"**. I could use **".com"** as part of the folder's name but I try to keep this folder name as small as possible. The folder name will be used by Docker when creating the Containers so, keeping this name short will make the container names much more readable.
+Whenever I get a new client, I go the **"D"** folder on my **"C: Drive"** and create a new folder for that client. I use my client's domain name as the name of that folder. If, for example, my client has a domain name **"example.com"** I call this client's folder as **"example"**. I could use **".com"** as part of the folder's name but I try to keep this folder name as small as possible. The folder name will be used by Docker when creating the Containers so, keeping this name short will make the container names much more readable. There is also another reason. Windows has a limitation for the length of file paths. The file path cannot be longer than **"256 characters"**. For this reason, keeping the base folder names small should always be at the top of our priorities.
 
->**C:\\Users\[MY USER NAME]\Docker\example**
+>**C:\\D\example**
 
 Now that I have this folder created for my client, I go to the next phase which will be to clone this Docker project with **"Git"**.
 
@@ -43,13 +43,13 @@ I am coming from the premise that you have installed Docker Toolbox. To clone th
 
 After typing the above command you should see the following:
 
-     /c/Users/My User Name
+     /c/Users/[My User Name]
 
 This just means that you are currently located on your **"C:"** drive and you are inside the folder **"Users/My User Name"** where the **"My User Name"** part should be replaced with the user name you have in your operating system.
 
 If you have been following this tutorial from the beginning, you have created the folder **"Docker"** inside of your home folder. So, in order to clone this repository you will first have to enter into this folder:
 
-    $ cd Docker
+    $ cd /c/d
 
 Now, you should be able to see the folder that you have created for your client. You can list the contents of a folder by doing the following:
 
@@ -71,7 +71,7 @@ Of course, you should replace the word **"example"** with the name of the folder
 
 The above command should output the following:
 
-    /c/Users/My User Name/Docker/example
+    /c/D/example
 
 Now that we are sure to be in the right location we can finally clone this repository like so:
 
@@ -111,14 +111,14 @@ The above command will output something like the following:
     bbcc3039375f drupal... "apache... 2 days... Up Abo... 0.0.0... example_drupal_1
     23ee726d813a phpmya... "/run.s... 2 days... Up Abo... 0.0.0... example_phpmyadmin_1
     08d1192caec0 busybo... "sh"       2 days... Up Abo...          example_data_1
-    176b2d5475d4 mariad... "docker... 2 days... Up Abo... 0.0.0... example_mysql_1
+    176b2d5475d4 mariad... "docker... 2 days... Up Abo... 0.0.0... example_mariadb_1
 
-The name of your containers should be at the last column. In my case the **"Drupal"** container was called **"example_drupal_1"** because **"example"** is the name of my client's folder. Consequently, my **"MariaDB"** or **"mysql"** container is called **"example_mysql_1"**.
+The name of your containers should be at the last column. In my case the **"Drupal"** container was called **"example_drupal_1"** because **"example"** is the name of my client's folder. Consequently, my **"MariaDB"** container is called **"example_mariadb_1"**.
 
 Now that we know the name of your two containers, we can issue the following two commands in order to run **"Cron"** and start the backups.
 
     $ docker exec -it example_drupal_1 bash /usr/sbin/service cron start
-    $ docker exec -it example_mysql_1 bash /usr/sbin/service cron start
+    $ docker exec -it example_mariadb_1 bash /usr/sbin/service cron start
 
 ## **6. Installing Drupal 8 From Within Kitematic**
 
@@ -131,25 +131,33 @@ Now you are done with the terminal commands. It is time to switch to the **"Kite
 	- User Name: **drupal**
 	- Password: **drupal**
 4.  You should expand the "Advanced" option at the bottom and type the Database Server and Port number. To find out this information you should go back to the **"Kitematic"** interface
-5. Click on the **"example_mysql_1"** container
+5. Click on the **"example_mariadb_1"** container
 6. Click on the **"Settings"** tab that should be on the top right-hand-side
 7. Now click on the **"Ports"** sub-tab. There you will be able to see the Database **"IP Number"** and the Port Number
 8. Copy the **"IP Number"** into the Database Server field and the **"Ports"** number into the database port number
 9. Proceed with the rest of the installation as normal
 
-## **7. How To Use PHPMyAdmin Within Kitematic**
+## **7. How To Use Drush, Composer, And Drupal Console**
+
+I am starting from the premise that you have the **"Drupal"** container up and running. You could issue a **"Drush"** or a **"Composer"** command from outside of the container. However, I find that the most convenient way to execute these commands is by entering into the **"Drupal"** container inside a bash terminal. To do that you execute the following command:
+
+    $ docker exec -i -t example_drupal_1 bash
+
+Of course, you should replace the word **"example"** with the correct name of your **"Drupal"** container as I describe on step **"5. Start Cron"**!
+
+## **8. How To Use PHPMyAdmin Within Kitematic**
 
 Using **"PHPMyAdmin"** is very simple. Just follow these steps:
 
 1. Switch to the **"Kitematic"** interface and click on the **"example_phpmyadmin_1"** container.
 2. Look to the right-hand-side and you will be able to see a window with a small screenshot of a **"PHPMyAdmin"** login screen. Click on that small screenshot. This will bring up your default Browser with the **"PHPMyAdmin"** login page.
 3. Following are the credentials you should supply in order to be able to login to **"PHPMyAdmin"**: 
-	- Server: **example_mysql_1**
+	- Server: **example_mariadb_1**
 	- Username: **root**
 	- Password: **root**
 4. Now you should have full access to your Databases. Your website database, as you know, will be called **"drupal"**
 
-## **8. How To Create A New Client**
+## **9. How To Create A New Client**
 
 Great! You have your first client set up. But, now, you want to set up a second client. How hard is it?
 
@@ -157,7 +165,7 @@ You will not be able to follow exactly the same steps again for your new client 
 
 You will have to make a few small changes on the **docker-compose.yml** file. You will have to change the ports for 3 of the containers in order to be able to create your new client's containers. It is very simple, though! Just redo the step **"3. Use Git To Clone This Repo"** inside of your new client's folder. Once you have downloaded this Repository, edit the file **docker-compose.yml** with your favorite text editor.
 
-First you should change the **Port Number** for the **"Drupal"** container. Go to line 24 where you should see the following:
+First you should change the **Port Number** for the **"Drupal"** container. Go to line 19 where you should see the following:
 
       - "8081:80"
 
@@ -165,7 +173,7 @@ You should replace the number **"8081"** with another number. It can be the next
 
       - "8082:80"
  
-Now is time to do the same for the **"MySQL"** container. Go to line 34 and you will see something like the following:
+Now is time to do the same for the **"MariaDB"** container. Go to line 29 and you will see something like the following:
 
       - '3307:3306'
 
@@ -173,7 +181,7 @@ Replace the number **"3307"** with another number. This line should, then, look 
 
       - '3308:3306'
 
-Finally, do the same for the **"PHPMyAdmin"** container. Go to line 56 and you will see something like the following:
+Finally, do the same for the **"PHPMyAdmin"** container. Go to line 45 and you will see something like the following:
 
       - '8091:80'
 
@@ -183,7 +191,7 @@ Replace the number **"8091"** with another number. This line should, then, look 
 
 Now you can save your changes and continue with step **"4. Start The Containers With Docker-Compose"**. This time around, everything should go much faster. It should take just a couple of seconds for you to have the new containers up and running.
 
-## **9. How To Use Eclipse PDT With This**
+## **10. How To Use Eclipse PDT With This**
 
 Eclipse is an amazing Open Source IDE (Integrated Development Environment). You can install Eclipse PDT by Googling for it and downloading the latest version. It can be a little confusing to figure out which version of Eclipse is the latest. The Eclipse community has the habit of giving names to each new major version instead of numbers. They also tend to develop each one in parallel. In my experience, the best way to know which one is the latest is not by going to their official website. You should, as I suggested, search on Google.
 

@@ -13,20 +13,15 @@ services:
       - ./html/modules:/var/www/html/modules
       - ./html/profiles:/var/www/html/profiles
       - ./html/themes:/var/www/html/themes
-      # this takes advantage of the feature in Docker that a new anonymous
-      # volume (which is what we're creating here) will be initialized with the
-      # existing content of the image at the same location
-      # - /var/www/html/sites
-      # - ./scripts/php.ini:/usr/local/etc/php/php.ini
     volumes_from:
-      - mysql
+      - mariadb
     ports:
       - "8081:80"
     links:
-      - mysql
+      - mariadb
       - phpmyadmin
     restart: always
-  mysql:
+  mariadb:
     build:
       context: ./setup/builds/mariadb
     image: mariadb
@@ -42,12 +37,6 @@ services:
       - MYSQL_USER=drupal
       - MYSQL_PASSWORD=drupal
     restart: always
-  data:
-    image: busybox
-    stdin_open: true
-    volumes:
-      - ./html:/var/www/html
-    restart: always
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     environment:
@@ -55,5 +44,5 @@ services:
     ports:
       - '8091:80'
     links:
-      - mysql
+      - mariadb
     restart: always

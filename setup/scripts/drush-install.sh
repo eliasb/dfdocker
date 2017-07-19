@@ -10,7 +10,7 @@ DRUPAL_PROFILE=standard
 
 drush site-install -y ${DRUPAL_PROFILE} \
   --site-name="Drupal 8 with Docker - Drush" \
-  --db-url=mysql://drupal:drupal@mysql/drupal \
+  --db-url=mysql://drupal:drupal@mariadb/drupal \
   --site-mail=admin@example.com \
   --account-name=admin \
   --account-pass=admin \
