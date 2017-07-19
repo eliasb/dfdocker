@@ -27,7 +27,7 @@ The first thing that I did after installing Kitematic was to go to my **"C: Driv
 
 Whenever I get a new client, I go the **"D"** folder on my **"C: Drive"** and create a new folder for that client. I use my client's domain name as the name of that folder. If, for example, my client has a domain name **"example.com"** I call this client's folder as **"example"**. I could use **".com"** as part of the folder's name but I try to keep this folder name as small as possible. The folder name will be used by Docker when creating the Containers so, keeping this name short will make the container names much more readable. There is also another reason. Windows has a limitation for the length of file paths. The file path cannot be longer than **"256 characters"**. For this reason, keeping the base folder names small should always be at the top of our priorities.
 
->**C:\\D\example**
+    C:\\D\example
 
 Now that I have this folder created for my client, I go to the next phase which will be to clone this Docker project with **"Git"**.
 
@@ -161,7 +161,11 @@ Using **"PHPMyAdmin"** is very simple. Just follow these steps:
 
 Great! You have your first client set up. But, now, you want to set up a second client. How hard is it?
 
-You will not be able to follow exactly the same steps again for your new client because your new containers will end up having a conflict with the **Port Numbers**. 
+When you are creating a new client in your computer, you can simply follow all the above steps and everything should work just fine. However, you will have to stop the previously running containers from your clients. There is a simple command that you can execute to stop all the running containers. You will have to execute the following command inside the **"Docker Quickstart Terminal"**:
+
+    docker stop $(docker ps -a -q)
+
+There is only one potential problem. If you plan on running the containers from both clients at the same time, you will not be able to follow exactly the same steps again. Your new client's containers will end up having a conflict with the **Port Numbers**. 
 
 You will have to make a few small changes on the **docker-compose.yml** file. You will have to change the ports for 3 of the containers in order to be able to create your new client's containers. It is very simple, though! Just redo the step **"3. Use Git To Clone This Repo"** inside of your new client's folder. Once you have downloaded this Repository, edit the file **docker-compose.yml** with your favorite text editor.
 
