@@ -23,11 +23,11 @@ You will also have to create a Docker account in order to be able to download im
 
 You can use this Docker project in any way you see fit. However, I have created this project to be a complement to my personal workflow. For this reason, I will explain here how I use this Docker project in my work routine.
 
-The first thing that I did after installing Kitematic was to go to my **"C: Drive"** and create a folder called **"D"** for **"Docker"**. This folder will be the storage place for all my clients. 
+The first thing that I did after installing Kitematic was to go to my **"C:\\\Users\\[My User Name]"** folder and create a folder called **"D"** for **"Docker"**. This folder will be the storage place for all my clients. 
 
-Whenever I get a new client, I go the **"D"** folder on my **"C: Drive"** and create a new folder for that client. I use my client's domain name as the name of that folder. If, for example, my client has a domain name **"example.com"** I call this client's folder as **"example"**. I could use **".com"** as part of the folder's name but I try to keep this folder name as small as possible. The folder name will be used by Docker when creating the Containers so, keeping this name short will make the container names much more readable. There is also another reason. Windows has a limitation for the length of file paths. The file path cannot be longer than **"256 characters"**. For this reason, keeping the base folder names small should always be at the top of our priorities.
+Whenever I get a new client, I go the **"D"** folder and create a new folder for that client. I use my client's domain name as the name of that folder. If, for example, my client has a domain name **"example.com"**, I call this client's folder as **"example"**. I could use **".com"** as part of the folder's name but I try to keep this folder name as small as possible. The folder name will be used by Docker when creating the Containers so, keeping this name short will make the container names much more readable. There is also another reason. Windows has a limitation for the length of file paths. The file path cannot be longer than **"256 characters"**. For this reason, keeping the base folder names small should always be at the top of our priorities.
 
-    C:\\D\example
+    C:\\Users\[My User Name]\D\example
 
 Now that I have this folder created for my client, I go to the next phase which will be to clone this Docker project with **"Git"**.
 
@@ -47,9 +47,9 @@ After typing the above command you should see the following:
 
 This just means that you are currently located on your **"C:"** drive and you are inside the folder **"Users/My User Name"** where the **"My User Name"** part should be replaced with the user name you have in your operating system.
 
-If you have been following this tutorial from the beginning, you have created the folder **"D"** in your **"C:"** drive. So, in order to clone this repository, you will first have to enter into this folder:
+If you have been following this tutorial from the beginning, you have created the folder **"D"** in your **"/c/Users/[My User Name]"** folder. So, in order to clone this repository, you will first have to enter into this folder:
 
-    $ cd /c/d
+    $ cd D
 
 Now, you should be able to see the folder that you have created for your client. You can list the contents of a folder by doing the following:
 
@@ -71,7 +71,7 @@ Of course, you should replace the word **"example"** with the name of the folder
 
 The above command should output the following:
 
-    /c/D/example
+    /c/Users/[My User Name]/D/example
 
 Now that we are sure to be in the right location we can finally clone this repository like so:
 
