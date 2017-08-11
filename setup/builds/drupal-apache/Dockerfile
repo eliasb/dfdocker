@@ -9,6 +9,8 @@ git \
 nano \
 cron \
 rsync \
+wget \
+curl \
 && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html

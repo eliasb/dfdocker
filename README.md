@@ -205,4 +205,4 @@ I got the link to the most recent download page. I will not guarantee that this 
 
 [https://eclipse.org/pdt/#download](https://eclipse.org/pdt/#download)
 
-Once you have Eclipse PDT installed you can create a new project and you should import the files for this project from the folder associated with your client. Select the folder **"html"** inside your client's folder.
+Once you have Eclipse PDT installed you can create a new project and you should import the files for this project from the folder associated with your client. Select the folder **"doc/html"** inside your client's folder.

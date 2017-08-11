@@ -8,11 +8,11 @@ services:
       context: ./setup/builds/drupal-apache
     image: drupal:8.2.3-apache
     volumes:
-      - ./:/html
+      - ./doc:/html
       - ./setup/scripts/php.ini:/usr/local/etc/php/php.ini
-      - ./html/modules:/var/www/html/modules
-      - ./html/profiles:/var/www/html/profiles
-      - ./html/themes:/var/www/html/themes
+      - ./doc/html/modules:/var/www/html/modules
+      - ./doc/html/profiles:/var/www/html/profiles
+      - ./doc/html/themes:/var/www/html/themes
     volumes_from:
       - mariadb
     ports:
