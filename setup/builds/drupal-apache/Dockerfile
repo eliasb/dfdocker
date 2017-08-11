@@ -30,4 +30,5 @@ RUN composer require drupal/console:~1.0 \
              --sort-packages
 
 # Add a cron job to backup the website.
-RUN echo '* * * * * root A=/var/www/html && B=/html && /usr/bin/rsync -azu $A $B && /usr/bin/rsync -azu $B $A' >> /etc/crontab
+RUN echo '* * * * * root /usr/bin/rsync -a --ignore-errors /var/www/html/ /html/' >> /etc/crontab
+RUN echo '* * * * * root /usr/bin/rsync -a --ignore-errors /html/ /var/www/html/' >> /etc/crontab

@@ -8,7 +8,7 @@ services:
       context: ./setup/builds/drupal-apache
     image: drupal:8.2.3-apache
     volumes:
-      - ./doc:/html
+      - ./doc/html/:/html/
       - ./setup/scripts/php.ini:/usr/local/etc/php/php.ini
       - ./doc/html/modules:/var/www/html/modules
       - ./doc/html/profiles:/var/www/html/profiles
@@ -28,7 +28,7 @@ services:
     ports:
         - '3307:3306'
     volumes:
-      - ./database:/root/mysql
+      - ./database/:/root/mysql/
       - /var/lib/mysql
       - /usr/bin
     environment:
