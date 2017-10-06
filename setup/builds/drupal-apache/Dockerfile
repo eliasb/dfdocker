@@ -1,17 +1,17 @@
 #docker build .
-FROM drupal:8.2.3-apache
+FROM drupal:8.4.0-apache
 
 MAINTAINER Elias Barbosa <info@eb8.com>
 
-RUN apt-get update && \
-DEBIAN_FRONTEND="noninteractive" apt-get install -y \
-git \
-nano \
-cron \
-rsync \
-wget \
-curl \
-&& rm -rf /var/lib/apt/lists/*
+RUN apt-get -y update
+RUN apt-get -y --fix-missing install cron
+RUN apt-get -y --fix-missing install curl
+RUN apt-get -y --fix-missing install git
+RUN apt-get -y --fix-missing install nano
+RUN apt-get -y --fix-missing install rsync
+RUN apt-get -y --fix-missing install wget
+
+RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /var/www/html
 
